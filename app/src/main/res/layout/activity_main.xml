@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="ListyCity"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:background="#1E521E"
+        android:padding="10dp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +50,6 @@
         android:layout_height="wrap_content"
         android:choiceMode="singleChoice"
         android:listSelector="#999999">
-
     </ListView>
 
     <LinearLayout
@@ -68,7 +78,6 @@
             android:layout_marginEnd="10dp"
             android:backgroundTint="#1E521E"
             android:text="CONFIRM" />
-
     </LinearLayout>
 
 </LinearLayout>

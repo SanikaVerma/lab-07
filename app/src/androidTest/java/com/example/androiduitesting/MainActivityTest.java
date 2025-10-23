@@ -67,5 +67,46 @@ public class MainActivityTest {
         onData(is(instanceOf(String.class))).inAdapterView(withId(R.id.city_list
         )).atPosition(0).check(matches((withText("Edmonton"))));
     }
+
+
+    @Test
+    public void testSwitchActivity() {
+        onView(withId(R.id.button_add)).perform(click());
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Calgary"));
+        onView(withId(R.id.button_confirm)).perform(click());
+        onData(is(instanceOf(String.class)))
+                .inAdapterView(withId(R.id.city_list))
+                .atPosition(0)
+                .perform(click());
+        onView(withId(R.id.city_name))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testConsistentCityName() {
+        onView(withId(R.id.button_add)).perform(click());
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Toronto"));
+        onView(withId(R.id.button_confirm)).perform(click());
+        onData(is(instanceOf(String.class)))
+                .inAdapterView(withId(R.id.city_list))
+                .atPosition(0)
+                .perform(click());
+        onView(withId(R.id.city_name))
+                .check(matches(withText("Toronto")));
+    }
+
+    @Test
+    public void testBackButton() {
+        onView(withId(R.id.button_add)).perform(click());
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Vancouver"));
+        onView(withId(R.id.button_confirm)).perform(click());
+        onData(is(instanceOf(String.class)))
+                .inAdapterView(withId(R.id.city_list))
+                .atPosition(0)
+                .perform(click());
+        onView(withId(R.id.button_back)).perform(click());
+        onView(withId(R.id.button_add)).check(matches(isDisplayed()));
+    }
+
 }
 
